@@ -1,0 +1,39 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+html,
+body,
+#root,
+.App {
+  height: 100%;
+}
+body {
+
+}
+.App-header,
+.App-footer {
+  background: red;
+  height: 50px;
+  position: fixed;
+  width: 100%;
+}
+.App-header {
+  top: 0;
+}
+.App-sidebar {
+  background: white;
+  bottom: 0;
+  box-shadow: 0 0 10px 10px rgba(0,0,0,.3);
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 80%;
+  transform: translateX(100%);
+}
+.App-sidebar.active {
+  transform: translateX(0);
+}
+.App-footer {
+  bottom: 0;
+}
