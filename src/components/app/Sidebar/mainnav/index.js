@@ -18,8 +18,15 @@ const styles = theme => ({
 
 function Mainnav(props) {
   const { classes } = props;
+  let userNav;
+  if (props.isAuth === true) {
+    userNav = 'User nav is visible'
+  } else {
+    userNav = 'User nav is not visible'
+  }
   return (
     <div className={classes.root}>
+      <div>TODO: {userNav}</div>
       <List component="nav">
 
         <ListItem button>

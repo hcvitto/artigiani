@@ -53,7 +53,7 @@ class Header extends Component {
             </Toolbar>
           </AppBar>
         </div>
-        <Sidebar open={this.state.sidebar} handleClick={this.toggleDrawer} />
+        <Sidebar open={this.state.sidebar} handleClick={this.toggleDrawer} isAuth={this.props.isAuth} />
       </React.Fragment>
     )
   }

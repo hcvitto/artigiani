@@ -2,8 +2,10 @@ import React from 'react';
 
 import { withStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
+import Divider from '@material-ui/core/Divider';
 
 import Mainnav from './mainnav/';
+import User from './user/';
 
 const styles = {
 };
@@ -18,7 +20,9 @@ function Sidebar(props) {
         onClick={props.handleClick}
         onKeyDown={props.handleClick}
       >          
-        <Mainnav />
+        <User isAuth={props.isAuth} />
+        <Divider />
+        <Mainnav isAuth={props.isAuth} />
       </div>
     </Drawer>
   )

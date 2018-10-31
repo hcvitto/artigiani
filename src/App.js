@@ -6,12 +6,13 @@ import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import purple from '@material-ui/core/colors/purple';
 import green from '@material-ui/core/colors/green';
 
+import { fakeAuth } from './services/auth';
+import appRoutes from './config/routes';
+
 import Header from './components/app/header';
 import Footer from './components/app/footer';
 
-import Home from './features/home/';
-import Signin from './features/signin/';
-import Signup from './features/signup/';
+import PrivateRoute from './components/privateRoute';
 
 
 import './assets/styles/main.css';
@@ -28,28 +29,35 @@ const theme = createMuiTheme({
 
 class App extends Component {
   render() {
+
+    const routes = appRoutes.map((route, i) => {
+      if (route.isPrivate) {
+        return <PrivateRoute
+            key={i}
+            path={route.path}
+            render={props => (
+              <route.component {...props} />
+            )}
+          />  
+      } else {
+        return <Route
+            key={i}
+            path={route.path}
+            exact={route.exact ? true : false}
+            render={props => (
+              <route.component {...props} />
+            )}
+          />
+      }
+    });
+
     return (
       <MuiThemeProvider theme={theme}>
-        <div className="App">
-          <Header />
+        {/* cambiare isAuth con context / global state  */}
+        <div className="App" isAuth={fakeAuth.isAuth}>
+          <Header isAuth={fakeAuth.isAuth} />
           <div>
-            <Route
-              key="0"
-              path="/"
-              exact="true"
-              component={Home}
-            />
-            <Route
-              key="1"
-              path="/sign-in"
-              component={Signin}
-            />
-            <Route
-              key="2"
-              path="/sign-up"
-              component={Signup}
-            />
-
+            {routes}
           </div>
           <Footer />
         </div>
