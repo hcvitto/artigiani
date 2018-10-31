@@ -3,10 +3,13 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const User = (props) => {
-  if (props.isAuth === true ) {
-    return <div className="sidebar-user"><Link to="/user">User area</Link></div>
-  }
-  return null;
+  return (
+    <div className="sidebar-user">
+      <p>User avatar</p>
+      <p>User nav</p>
+      <p>Logout</p>
+    </div>
+  )
 }
 
 export default User;

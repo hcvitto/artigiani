@@ -20,7 +20,11 @@ function Sidebar(props) {
         onClick={props.handleClick}
         onKeyDown={props.handleClick}
       >          
-        <User isAuth={props.isAuth} />
+        {
+          props.isAuth 
+          ? <User isAuth={props.isAuth} /> 
+          : ''
+        }
         <Divider />
         <Mainnav isAuth={props.isAuth} />
       </div>

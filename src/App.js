@@ -6,14 +6,16 @@ import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import purple from '@material-ui/core/colors/purple';
 import green from '@material-ui/core/colors/green';
 
+import PrivateRoute from './components/privateRoute';
+
 import { fakeAuth } from './services/auth';
-import appRoutes from './config/routes';
 
 import Header from './components/app/header';
 import Footer from './components/app/footer';
-
-import PrivateRoute from './components/privateRoute';
-
+import Home from './features/home/';
+import Signin from './features/signin/';
+import Signup from './features/signup/';
+import User from './features/user/';
 
 import './assets/styles/main.css';
 
@@ -30,34 +32,48 @@ const theme = createMuiTheme({
 class App extends Component {
   render() {
 
-    const routes = appRoutes.map((route, i) => {
+    /*const routes = appRoutes.map((route, i) => {
       if (route.isPrivate) {
+        //const Compo = route.component
         return <PrivateRoute
+            component={route.component}
             key={i}
             path={route.path}
-            render={props => (
-              <route.component {...props} />
-            )}
           />  
-      } else {
-        return <Route
-            key={i}
-            path={route.path}
-            exact={route.exact ? true : false}
-            render={props => (
-              <route.component {...props} />
-            )}
-          />
       }
-    });
+
+      return <Route
+          key={i}
+          path={route.path}
+          exact={route.exact ? true : false}
+          render={props => (
+            <route.component {...props} />
+          )}
+        />
+    });*/
 
     return (
       <MuiThemeProvider theme={theme}>
         {/* cambiare isAuth con context / global state  */}
-        <div className="App" isAuth={fakeAuth.isAuth}>
+        <div className="App">
           <Header isAuth={fakeAuth.isAuth} />
           <div>
-            {routes}
+            <Route
+              path="/"
+              exact
+              component={Home}
+            />
+            <Route
+              path="/sign-in"
+              component={Signin}
+            />
+            <Route
+              path="/sign-up"
+              component={Signup}
+            />
+            <PrivateRoute 
+              path='/user' 
+              component={User} />
           </div>
           <Footer />
         </div>

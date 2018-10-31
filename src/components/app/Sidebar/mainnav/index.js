@@ -18,26 +18,23 @@ const styles = theme => ({
 
 function Mainnav(props) {
   const { classes } = props;
-  let userNav;
-  if (props.isAuth === true) {
-    userNav = 'User nav is visible'
-  } else {
-    userNav = 'User nav is not visible'
-  }
   return (
     <div className={classes.root}>
-      <div>TODO: {userNav}</div>
       <List component="nav">
 
-        <ListItem button>
-          <ListItemText>
-            <Link to="/sign-in">Sign in</Link>
-          </ListItemText>
-        </ListItem>
+        {
+          !props.isAuth
+          ? <ListItem button>
+              <ListItemText>
+                <Link to="/sign-in">Login</Link>
+              </ListItemText>
+            </ListItem>
+          : ''
+        }
         
         <ListItem button>
           <ListItemText>
-            <Link to="/sign-up">Sign up</Link>
+            <Link to="/sign-up">Registrati</Link>
           </ListItemText>
         </ListItem>
 
