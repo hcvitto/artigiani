@@ -1,1 +1,3 @@
-export default () => "Restricted user area"
+const User = () => "Area utente (riservata)"
+
+export default User;
