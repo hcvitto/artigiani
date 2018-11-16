@@ -1,6 +1,12 @@
 ## TODO
 
+ - set models
+ - routing server/frontend
+ - implement auth (with firebase?)
  - implement node/express as server side stack to cra app
+ - implement mongodb for quick testing
+ 
+ 
  
  
 
