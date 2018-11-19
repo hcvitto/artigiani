@@ -1,5 +1,16 @@
 ## TODO
 
+### Auth
+
+ - implement auth with firebase
+  - create fb app - done
+  - install fb react - done
+  - initi fb in app - done
+
+### Redux
+
+### Database
+
  - set models
  - routing server/frontend
  - implement auth (with firebase?)
