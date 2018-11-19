@@ -3,6 +3,10 @@
  - set models
  - routing server/frontend
  - implement auth (with firebase?)
+  - create fb app
+  - import config in app
+  - create reg form
+  - create reg functionality
  - implement node/express as server side stack to cra app
  - implement mongodb for quick testing
  
