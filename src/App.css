@@ -1,3 +1,11 @@
+fieldset {
+  border: 0;
+}
+legend {
+  
+}
+
+
 .App {
   text-align: center;
 }

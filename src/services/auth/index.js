@@ -1,18 +1,28 @@
-export const login = (email, pwd) => {
+const signup = (email, pwd) => {
+  localStorage.setItem('user', {
+    id: 1,
+    email: email
+  });
+  console.log(localStorage.getItem('user'))
+}
+/*
+const login = (email, pwd) => {
   return true
 }
 
-export const logout = (user) => {
+const logout = (user) => {
   return false
 }
 
-export const requirePwd = (user) => {
+const requirePwd = (user) => {
 
 }
 
-export const setNewPwd = (pwd) => {
+const setNewPwd = (pwd) => {
 
 }
+*/
+
 
 export const fakeAuth = {
   isAuth: false,
@@ -23,5 +33,10 @@ export const fakeAuth = {
   logout(cb) {
     this.isAuth = false
     setTimeout(cb, 100)
+  },
+  signup(email, pwd) {
+    setTimeout((email, pwd) => {
+      signup(email, pwd)
+    }, 100)
   }
 }

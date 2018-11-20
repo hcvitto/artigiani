@@ -11,6 +11,9 @@ body,
 body {
 
 }
+fieldset {
+  border: 0;
+}
 .App-header,
 .App-footer {
   background: red;

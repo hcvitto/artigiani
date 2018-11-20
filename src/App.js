@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { Route } from "react-router-dom";
+import { BrowserRouter, Route } from "react-router-dom";
 
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import purple from '@material-ui/core/colors/purple';
@@ -55,28 +55,30 @@ class App extends Component {
     return (
       <MuiThemeProvider theme={theme}>
         {/* cambiare isAuth con context / global state  */}
-        <div className="App">
-          <Header isAuth={fakeAuth.isAuth} />
-          <div>
-            <Route
-              path="/"
-              exact
-              component={Home}
-            />
-            <Route
-              path="/sign-in"
-              component={Signin}
-            />
-            <Route
-              path="/sign-up"
-              component={Signup}
-            />
-            <PrivateRoute 
-              path='/user' 
-              component={User} />
+        <BrowserRouter>
+          <div className="App">
+            <Header isAuth={fakeAuth.isAuth} />
+            <div>
+              <Route
+                path="/"
+                exact
+                component={Home}
+              />
+              <Route
+                path="/sign-in"
+                component={Signin}
+              />
+              <Route
+                path="/registrati"
+                component={Signup}
+              />
+              <PrivateRoute 
+                path='/user' 
+                component={User} />
+            </div>
+            <Footer />
           </div>
-          <Footer />
-        </div>
+        </BrowserRouter>
       </MuiThemeProvider>
     );
   }

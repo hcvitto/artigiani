@@ -1,28 +1,12 @@
-import Home from '../features/home/';
-import Signin from '../features/signin/';
-import Signup from '../features/signup/';
-import User from '../features/user/';
+export const HOME = '/';
 
+export const SIGNIN = '/sign-in';
+export const SIGNUP = '/registrati';
+export const LOGOUT = '/logout';
+export const FORGOT_PWD = '/forgot-password';
+export const VERIFY_PWD_RESET = '/verify-password-reset';
+export const CREATE_NEW_PWD = '/create-new-password';
 
-const appRoutes = [
-  {
-    path: '/',
-    exact: true,
-    component: Home
-  },
-  {
-    path: '/sign-in',
-    component: Signin
-  },
-  {
-    path: '/sign-up',
-    component: Signup
-  },
-  {
-    path: '/user',
-    component: User,
-    isPrivate: 'true'
-  },
-]
-
-export default appRoutes;
+export const ARTIGIANI = '/artigiani';
+export const ARTIGIANO = '/artigiano';
+export const USER = '/user';

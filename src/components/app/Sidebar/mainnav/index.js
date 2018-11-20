@@ -2,6 +2,8 @@ import React from 'react';
 
 import { Link } from 'react-router-dom';
 
+import * as routes from '../../../../config/routes';
+
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
@@ -26,7 +28,7 @@ function Mainnav(props) {
           !props.isAuth
           ? <ListItem button>
               <ListItemText>
-                <Link to="/sign-in">Login</Link>
+                <Link to={routes.SIGNIN}>Login</Link>
               </ListItemText>
             </ListItem>
           : ''
@@ -34,7 +36,7 @@ function Mainnav(props) {
         
         <ListItem button>
           <ListItemText>
-            <Link to="/sign-up">Registrati</Link>
+            <Link to={routes.SIGNUP}>Registrati</Link>
           </ListItemText>
         </ListItem>
 
