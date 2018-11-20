@@ -2,26 +2,28 @@ import React, { Component } from 'react';
 
 import { Link, Redirect } from 'react-router-dom';
 
-import { fakeAuth } from "../../../../services/auth";
+import * as auth from "../../../../services/auth";
 
 class User extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      loggedIn: true
+      isAuth: this.props.isAuth
     }
     this.handleLogout = this.handleLogout.bind(this)
   }
   handleLogout() {
-    fakeAuth.logout(() => {
-      this.setState(() => ({
-        loggedIn: false
-      }))
-    })
+    auth
+      .logoutUser()
+      .then(() => {
+        this.props.history.push('/');
+      })
+      .catch(error => {
+        console.log(error)
+      })
   }
   render() {
-    const { loggedIn } = this.state
-    if (loggedIn) {
+    if (this.state.isAuth) {
       return <div className="sidebar-user">
               <p>User avatar</p>
               <p>User nav</p>

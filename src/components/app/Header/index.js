@@ -27,14 +27,14 @@ class Header extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      sidebar: false
+      showSidebar: false
     };
     this.toggleDrawer = this.toggleDrawer.bind(this);
   } 
 
   toggleDrawer = () => {
     this.setState({
-      sidebar: !this.state.sidebar
+      showSidebar: !this.state.showSidebar
     })
   }
 
@@ -53,7 +53,7 @@ class Header extends Component {
             </Toolbar>
           </AppBar>
         </div>
-        <Sidebar open={this.state.sidebar} handleClick={this.toggleDrawer} isAuth={this.props.isAuth} />
+        <Sidebar open={this.state.showSidebar} handleClick={this.toggleDrawer} isAuth={this.props.isAuth} />
       </React.Fragment>
     )
   }

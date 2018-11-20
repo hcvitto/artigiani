@@ -5,9 +5,8 @@ import { Redirect } from "react-router-dom";
 import { withStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
-import Input from '@material-ui/core/Input';
 
-import { auth } from "../../config/firebase";
+import * as auth from "../../services/auth";
 
 const styles = theme => ({
   container: {
@@ -62,7 +61,7 @@ class Signup extends Component {
     auth
       .createUser(email, pwd)
       .then(user => {
-        console.log('TODO: manage user registration. ', user);
+        console.log('TODO: manage after user registration. ', user);
       })
       .catch(error => {
         const errorCode = error.code;
@@ -70,7 +69,7 @@ class Signup extends Component {
         this.setState({
           formErrorMsg: errorMessage
         })
-        console.log('TODO: manage registration errors. ', errorCode, errorMessage);
+        console.log('TODO: manage registration errors for end user: ', `${errorCode}: ${errorMessage}`);
       })
   }
 
@@ -87,9 +86,10 @@ class Signup extends Component {
     return (
       <form onSubmit={this.handleSubmit}>
         <fieldset className={classes.container}>
-          <legend>Login</legend>
+          <legend>Registrati</legend>
           <p>{formErrorMsg}</p>
           <TextField
+            autoComplete="off"
             id="email"
             label="Email"
             error={emailError}
@@ -98,7 +98,8 @@ class Signup extends Component {
             onChange={this.handleInputChange}
             helperText={emailError ? emailErrorMsg : ''}
           />
-          <Input
+          <TextField
+            autoComplete="off"
             type={showPwd ? "text" : "password"}
             id="pwd"
             label="Password"
@@ -108,7 +109,7 @@ class Signup extends Component {
             onChange={this.handleInputChange}
             helperText={pwdError ? pwdErrorMsg : ''}
           />
-          <div onClick={this.togglePwdVisiblity}>Show password</div>
+          <div onClick={this.togglePwdVisiblity}>{showPwd ? 'Hide' : 'Show'} password</div>
         </fieldset>
         <Button variant="contained" color="primary" type="submit" disabled={isInvalid}>Invia</Button>
       </form>

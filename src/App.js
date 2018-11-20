@@ -2,13 +2,15 @@ import React, { Component } from 'react';
 
 import { BrowserRouter, Route } from "react-router-dom";
 
+import { auth } from "./config/firebase";
+
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import purple from '@material-ui/core/colors/purple';
 import green from '@material-ui/core/colors/green';
 
 import PrivateRoute from './components/privateRoute';
 
-import { fakeAuth } from './services/auth';
+//import { fakeAuth } from './services/auth';
 
 import Header from './components/app/header';
 import Footer from './components/app/footer';
@@ -30,34 +32,41 @@ const theme = createMuiTheme({
 });
 
 class App extends Component {
-  render() {
-
-    /*const routes = appRoutes.map((route, i) => {
-      if (route.isPrivate) {
-        //const Compo = route.component
-        return <PrivateRoute
-            component={route.component}
-            key={i}
-            path={route.path}
-          />  
+  constructor(props) {
+    super(props)
+    this.state = {
+      user: null,
+      isAuth: false
+    }
+  }
+  componentDidMount() {
+    // TODO: test state alternatives: context / redux
+    this.listener = auth.onAuthStateChanged(user => {
+      if (user) {
+        //console.log('componentDidMount', user)
+        this.setState({
+          userEmail: user.email,
+          isAuth: true
+        })
+      } else {
+        this.setState({
+          user: null,
+          isAuth: false
+        })
       }
+    })
+  }
+  componentWillUnmount() {
+    this.listener()
+  }
 
-      return <Route
-          key={i}
-          path={route.path}
-          exact={route.exact ? true : false}
-          render={props => (
-            <route.component {...props} />
-          )}
-        />
-    });*/
+  render() {
 
     return (
       <MuiThemeProvider theme={theme}>
-        {/* cambiare isAuth con context / global state  */}
         <BrowserRouter>
           <div className="App">
-            <Header isAuth={fakeAuth.isAuth} />
+            <Header isAuth={this.state.isAuth} />
             <div>
               <Route
                 path="/"
