@@ -2,7 +2,7 @@
 
 ### Auth
 
- - implement auth with firebase
+ - #### implement auth with firebase
   - create fb app - done
   - install fb react - done
   - init fb in app - done
