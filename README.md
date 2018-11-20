@@ -5,9 +5,16 @@
  - implement auth with firebase
   - create fb app - done
   - install fb react - done
-  - initi fb in app - done
+  - init fb in app - done
+  - create signin/signup/logout methods - done
+  - create forgot pwd / confirm email methods
+  - connet auth to global state (connect / redux)
 
 ### Redux
+
+ - install redux
+ - create store
+ - define actions, actionsCreators, reducers
 
 ### Database
 
