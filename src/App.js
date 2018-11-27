@@ -4,13 +4,13 @@ import { BrowserRouter, Route } from "react-router-dom";
 
 import { auth } from "./config/firebase";
 
+import { UserProvider } from './providers/User';
+
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import purple from '@material-ui/core/colors/purple';
 import green from '@material-ui/core/colors/green';
 
 import PrivateRoute from './components/privateRoute';
-
-//import { fakeAuth } from './services/auth';
 
 import Header from './components/app/header';
 import Footer from './components/app/footer';
@@ -35,23 +35,28 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      user: null,
-      isAuth: false
+      auth: {
+        user: null,
+        isAuth: false
+      }
     }
   }
   componentDidMount() {
-    // TODO: test state alternatives: context / redux
+    // TODO: test state alternatives: redux
     this.listener = auth.onAuthStateChanged(user => {
       if (user) {
-        //console.log('componentDidMount', user)
         this.setState({
-          userEmail: user.email,
-          isAuth: true
+          auth: {
+            user: user.email,
+            isAuth: true
+          }
         })
       } else {
         this.setState({
-          user: null,
-          isAuth: false
+          auth: {
+            user: null,
+            isAuth: false
+          }
         })
       }
     })
@@ -65,28 +70,30 @@ class App extends Component {
     return (
       <MuiThemeProvider theme={theme}>
         <BrowserRouter>
-          <div className="App">
-            <Header isAuth={this.state.isAuth} />
-            <div>
-              <Route
-                path="/"
-                exact
-                component={Home}
-              />
-              <Route
-                path="/sign-in"
-                component={Signin}
-              />
-              <Route
-                path="/registrati"
-                component={Signup}
-              />
-              <PrivateRoute 
-                path='/user' 
-                component={User} />
+            <div className="App">
+              <UserProvider value={this.state.auth}>
+                <Header />
+                <div>
+                  <Route
+                    path="/"
+                    exact
+                    component={Home}
+                  />
+                  <Route
+                    path="/sign-in"
+                    component={Signin}
+                  />
+                  <Route
+                    path="/registrati"
+                    component={Signup}
+                  />
+                  <PrivateRoute 
+                    path='/user' 
+                    component={User} />
+                </div>
+              </UserProvider>
+              <Footer />
             </div>
-            <Footer />
-          </div>
         </BrowserRouter>
       </MuiThemeProvider>
     );

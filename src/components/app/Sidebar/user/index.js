@@ -1,38 +1,45 @@
 import React, { Component } from 'react';
 
-import { Link, Redirect } from 'react-router-dom';
+import { UserConsumer } from '../../../../providers/User';
+
+import { Link } from 'react-router-dom';
+import { withRouter } from "react-router";
 
 import * as auth from "../../../../services/auth";
 
 class User extends Component {
   constructor(props) {
     super(props)
-    this.state = {
-      isAuth: this.props.isAuth
-    }
     this.handleLogout = this.handleLogout.bind(this)
   }
+
   handleLogout() {
     auth
       .logoutUser()
       .then(() => {
-        this.props.history.push('/');
+        console.log('logged out');
+        this.props.history.push('/')
       })
       .catch(error => {
         console.log(error)
       })
   }
   render() {
-    if (this.state.isAuth) {
-      return <div className="sidebar-user">
-              <p>User avatar</p>
-              <p>User nav</p>
-              <p><Link to="/user">Area utente</Link></p>
-              <button onClick={this.handleLogout}>Logout</button>
-            </div>
-    }
-    return <Redirect to='/' />
+      return (
+        <UserConsumer>
+          {isAuth => (
+            isAuth.isAuth
+            ? <div className="sidebar-user">
+                <p>User avatar</p>
+                <p>User nav</p>
+                <p><Link to="/user">Area utente</Link></p>
+                <button onClick={this.handleLogout}>Logout</button>
+              </div>
+            : null
+          )}
+        </UserConsumer>
+      )  
   }
 }
 
-export default User;
+export default withRouter(User);

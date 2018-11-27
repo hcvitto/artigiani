@@ -23,6 +23,7 @@ const styles = {
   },
 };
 
+
 class Header extends Component {
   constructor(props) {
     super(props);
@@ -53,7 +54,7 @@ class Header extends Component {
             </Toolbar>
           </AppBar>
         </div>
-        <Sidebar open={this.state.showSidebar} handleClick={this.toggleDrawer} isAuth={this.props.isAuth} />
+        <Sidebar open={this.state.showSidebar} handleClick={this.toggleDrawer} />
       </React.Fragment>
     )
   }

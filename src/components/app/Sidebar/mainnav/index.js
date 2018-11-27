@@ -2,6 +2,8 @@ import React from 'react';
 
 import { Link } from 'react-router-dom';
 
+import { UserConsumer } from '../../../../providers/User';
+
 import * as routes from '../../../../config/routes';
 
 import PropTypes from 'prop-types';
@@ -23,23 +25,24 @@ function Mainnav(props) {
   return (
     <div className={classes.root}>
       <List component="nav">
-
-        {
-          !props.isAuth
-          ? <ListItem button>
-              <ListItemText>
-                <Link to={routes.SIGNIN}>Login</Link>
-              </ListItemText>
-            </ListItem>
-          : ''
-        }
-        
-        <ListItem button>
-          <ListItemText>
-            <Link to={routes.SIGNUP}>Registrati</Link>
-          </ListItemText>
-        </ListItem>
-
+        <UserConsumer>
+          {isAuth => (
+              isAuth.isAuth
+              ? 'Navigazione utente loggato'
+              : <React.Fragment>
+                  <ListItem button>
+                    <ListItemText>
+                      <Link to={routes.SIGNIN}>Login</Link>
+                    </ListItemText>
+                  </ListItem>
+                  <ListItem button>
+                    <ListItemText>
+                      <Link to={routes.SIGNUP}>Registrati</Link>
+                    </ListItemText>
+                  </ListItem>
+                </React.Fragment>
+            )}
+        </UserConsumer>
       </List>
     </div>
   )

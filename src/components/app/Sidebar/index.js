@@ -10,7 +10,6 @@ import User from './user/';
 const styles = {
 };
 
-
 function Sidebar(props) {
   return (
     <Drawer anchor="right" open={props.open}>
@@ -20,13 +19,9 @@ function Sidebar(props) {
         onClick={props.handleClick}
         onKeyDown={props.handleClick}
       >          
-        {
-          props.isAuth 
-          ? <User isAuth={props.isAuth} /> 
-          : ''
-        }
+        <User />
         <Divider />
-        <Mainnav isAuth={props.isAuth} />
+        <Mainnav />
       </div>
     </Drawer>
   )

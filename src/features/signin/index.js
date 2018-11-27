@@ -62,6 +62,9 @@ class Signin extends Component {
       .loginUser(email, pwd)
       .then(user => {
         console.log('TODO: manage after user login. ', user);
+        this.setState({
+          redirectToReferrer: true
+        })
       })
       .catch(error => {
         const errorCode = error.code;
