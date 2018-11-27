@@ -26,7 +26,7 @@
   - init fb in app - done
   - create signin/signup/logout methods - done
   - create forgot pwd / confirm email methods - todo
-  - connet auth to global state (connect / redux) - todo
+  - connect auth to global state (connect / redux) - done with context
 
 ### Redux
 
