@@ -1,53 +1,14 @@
 import { auth } from '../../config/firebase';
 
-export const fakeAuth = {
-  isAuth: false,
-  login(cb) {
-    this.isAuth = true
-    setTimeout(cb, 100)
-  },
-  logout(cb) {
-    this.isAuth = false
-    setTimeout(cb, 100)
-  },
-  signup(email, pwd) {
-    setTimeout((email, pwd) => {
-      //signup(email, pwd)
-    }, 100)
-  }
-}
-
 // registrazione /registrati
 export const createUser = (email, pwd) => auth.createUserWithEmailAndPassword(email, pwd);
 
 // login / sign-in
 export const loginUser = (email, pwd) => auth.signInWithEmailAndPassword(email, pwd)
-/*
-.then(user => {
-      console.log('TODO: manage user login. ', user)
-      return user;
-    })
-    .catch(error => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      console.log('TODO: manage login errors. ', error);
-      return errorMessage;
-    })
-}
-*/
+
 // logout
 export const logoutUser = () => auth.signOut()
-    /*.then(() => {
-      console.log('TODO: manage user logout.');
-      return true;
-    })
-    .catch(error => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      console.log('TODO: manage logout errors. ', error);
-      return errorMessage;
-    })
-}*/
+
 /*
 // PASSWORD RESET PROCESS  
 

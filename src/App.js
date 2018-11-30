@@ -51,7 +51,7 @@ class App extends Component {
       if (user) {
         this.setState({
           auth: {
-            user: user.email,
+            user: user,
             isAuth: true
           }
         })

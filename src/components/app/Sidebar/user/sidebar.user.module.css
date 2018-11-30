@@ -1,0 +1,17 @@
+.sidebar-user {
+  padding: 15px;
+  text-align: center;
+}
+.avatar {
+  border-bottom: 1px solid red;
+  margin-bottom: 15px;
+  padding-bottom: 15px;
+}
+.img {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 50%;
+  height: 100px;
+  width: 100px;
+}

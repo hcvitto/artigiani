@@ -6,6 +6,8 @@ import { withStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 
+import { users } from '../../services/mocks/users';
+
 import * as auth from "../../services/auth";
 
 const styles = theme => ({
@@ -22,6 +24,8 @@ const styles = theme => ({
 });
 
 class Signin extends Component {
+
+  _isMounted = false;
 
   constructor(props) {
     super(props)
@@ -40,6 +44,14 @@ class Signin extends Component {
     this.handleInputChange = this.handleInputChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.togglePwdVisiblity = this.togglePwdVisiblity.bind(this)
+  }
+
+  componentDidMount() {
+    this._isMounted = true
+  }
+
+  componentWillUnmount() {
+    this._isMounted = false
   }
 
   togglePwdVisiblity() {
@@ -61,10 +73,15 @@ class Signin extends Component {
     auth
       .loginUser(email, pwd)
       .then(user => {
-        console.log('TODO: manage after user login. ', user);
-        this.setState({
-          redirectToReferrer: true
-        })
+        user.myId = users[0].id
+        user.avatar = users[0].img
+        user.name = users[0].name
+        localStorage.setItem('user', JSON.stringify(user))
+        if (this._isMounted) {
+          this.setState({
+            redirectToReferrer: true
+          })
+        }
       })
       .catch(error => {
         const errorCode = error.code;
