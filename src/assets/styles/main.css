@@ -6,14 +6,46 @@ html,
 body,
 #root,
 .App {
+  color: #000;
   height: 100%;
 }
 body {
-
+  font-family: 'Libre Franklin', sans-serif;
+  overflow: hidden;
 }
 fieldset {
   border: 0;
 }
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: normal;
+  line-height: 1.5;
+}
+h1 {
+  font-size: 1.8rem;
+}
+h2 {
+  font-size: 1.5rem;
+}
+h3 {
+  font-size: 1.2rem;
+}
+a {
+  color: #000;
+  text-decoration: none;
+}
+
+/*  ICONS  */
+[class*=icon-],
+[class^=icon-] {
+  background: red;
+  border-radius: 50%;
+  display: inline-block;
+  height: 36px;
+  text-indent: -5000px;
+  width: 36px;
+}
+
 .App-header,
 .App-footer {
   background: red;
@@ -39,4 +71,87 @@ fieldset {
 }
 .App-footer {
   bottom: 0;
+}
+#content-wrapper {
+  height: calc(100% - 106px);
+  overflow: auto;
+}
+
+/*  CARDS  */
+.card-list {
+  padding: 20px;
+}
+.card-list .card-item {
+  border-radius: 5px;
+  box-shadow: 0 0 5px 1px rgba(0,0,0,.3);
+  margin: 15px 0;
+}
+.card-list .card-item .img {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 150px;
+  overflow: hidden;
+}
+.card-list .card-item .text {
+  height: 70px;
+  padding: 10px 15px;
+}
+.card-list .card-item .text h2 {
+}
+
+/*  SCHEDA  */
+.scheda {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.scheda .img {
+  align-items: flex-end;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  height: 30%;
+}
+.scheda .img h1 {
+  color: #fff;
+  padding: 15px;
+}
+.scheda .social-buttons {
+  align-items: flex-start;
+  display: flex;
+  padding: 10px 0;
+}
+.scheda .social-buttons a {
+  margin: 0 10px;
+}
+.scheda .description {
+  padding: 20px;
+}
+
+
+@media screen and (min-width: 768px) {
+  /*  CARDS  */
+  .card-list {
+    display: flex;
+  }
+  .card-list .card-item {
+    margin: 15px;
+    width: 30%;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  /*  CARDS  */
+  .card-list {
+    display: flex;
+  }
+  .card-list .card-item {
+    margin: 15px;
+    width: 20%;
+  }
+  .card-list .card-item .text {
+    height: auto;
+  }
 }

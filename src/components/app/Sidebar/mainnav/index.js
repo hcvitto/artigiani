@@ -25,10 +25,15 @@ function Mainnav(props) {
   return (
     <div className={classes.root}>
       <List component="nav">
+        <ListItem button>
+          <ListItemText>
+            <Link to={routes.ARTIGIANI}>Artigiani</Link>
+          </ListItemText>
+        </ListItem>
         <UserConsumer>
           {isAuth => (
               isAuth.isAuth
-              ? 'Navigazione utente loggato'
+              ? null
               : <React.Fragment>
                   <ListItem button>
                     <ListItemText>

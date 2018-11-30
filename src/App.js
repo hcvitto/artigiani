@@ -14,9 +14,13 @@ import PrivateRoute from './components/privateRoute';
 
 import Header from './components/app/header';
 import Footer from './components/app/footer';
+
 import Home from './features/home/';
 import Signin from './features/signin/';
 import Signup from './features/signup/';
+import Artigiani from './features/artigiani/';
+import Artigiano from './features/artigiano/';
+
 import User from './features/user/';
 
 import './assets/styles/main.css';
@@ -73,7 +77,7 @@ class App extends Component {
             <div className="App">
               <UserProvider value={this.state.auth}>
                 <Header />
-                <div>
+                <div id="content-wrapper"> 
                   <Route
                     path="/"
                     exact
@@ -86,6 +90,14 @@ class App extends Component {
                   <Route
                     path="/registrati"
                     component={Signup}
+                  />
+                  <Route
+                    path="/artigiani"
+                    component={Artigiani}
+                  />
+                  <Route
+                    path="/artigiano/:slug/:id"
+                    component={Artigiano}
                   />
                   <PrivateRoute 
                     path='/user' 
