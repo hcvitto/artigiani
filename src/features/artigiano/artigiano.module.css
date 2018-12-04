@@ -1,0 +1,28 @@
+.scheda {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.img {
+  align-items: flex-end;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  height: 30%;
+}
+h1 {
+  color: #fff;
+  padding: 15px;
+}
+.social-buttons {
+  align-items: flex-start;
+  display: flex;
+  padding: 10px 0;
+}
+.social-buttons a {
+  margin: 0 10px;
+}
+.description {
+  padding: 20px;
+}

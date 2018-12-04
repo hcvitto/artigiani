@@ -44,7 +44,7 @@ export const artigiani = [
    ],
     geo: {
       lat: 45.500200,
-      lon: 9.167770
+      lng: 9.167770
     },
     public: true,
     id: 3216549865165,
@@ -96,7 +96,7 @@ export const artigiani = [
    ],
     geo: {
       lat: 45.479490,
-      lon: 9.203510
+      lng: 9.203510
     },
     public: true,
     id: 3216549865166,
@@ -147,8 +147,8 @@ export const artigiani = [
       },
    ],
     geo: {
-      lat: 45.437320,
-      lon: 9.164450
+      lat: 45.534143,
+      lng: 9.370667
     },
     public: true,
     id: 3216549865167,
@@ -200,7 +200,7 @@ export const artigiani = [
    ],
     geo: {
       lat: 45.437320,
-      lon: 9.164450
+      lng: 9.164450
     },
     public: false,
     id: 3216549865168,

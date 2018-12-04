@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import * as routes from '../../config/routes.js';
 
-import { getArtigiani } from '../../services/';
+import { getArtigiani } from '../../services/artigiani';
 
 import Card from '../../components/common/card';
 

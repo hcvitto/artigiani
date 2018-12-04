@@ -24,7 +24,6 @@ class User extends Component {
 
   componentDidMount() {
     const u = localStorage.getItem('user')
-    console.log('componentDidMount sidebar', u)
     if (u) {
       this.setState({
         user: JSON.parse(localStorage.getItem('user'))
@@ -36,7 +35,6 @@ class User extends Component {
     auth
       .logoutUser()
       .then(() => {
-        console.log('logged out');
         localStorage.removeItem('user')
         this.props.history.push('/')
       })

@@ -4,6 +4,8 @@ import SocialBadge from '../../components/common/socialBadge';
 
 import { getArtigiano } from '../../services/';
 
+import styles from './artigiano.module.css';
+
 export default class Artigiano extends Component {
   constructor(props) {
     super(props)
@@ -32,14 +34,14 @@ export default class Artigiano extends Component {
       : null
     return (
       artigiano 
-      ? <div className="scheda">
-          <div className="img" style={{backgroundImage: "url(" + artigiano.img + ")"}}>
+      ? <div className={styles.scheda}>
+          <div className={styles.img} style={{backgroundImage: "url(" + artigiano.img + ")"}}>
             <h1>{artigiano.name}</h1>
           </div>
-          <div className="social-buttons">
+          <div className={styles['social-buttons']}>
             {social}
           </div>
-          <div className="description">
+          <div className={styles.description}>
             {artigiano.description}
           </div>
         </div>

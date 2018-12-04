@@ -26,3 +26,5 @@ yarn-error.log*
 src/config/firebase/config\.js
 
 src/config/firebase/
+
+src/config/maps/

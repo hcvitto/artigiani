@@ -15,11 +15,12 @@ import PrivateRoute from './components/privateRoute';
 import Header from './components/app/header';
 import Footer from './components/app/footer';
 
-import Home from './features/home/';
+//import Home from './features/home/';
 import Signin from './features/signin/';
 import Signup from './features/signup/';
 import Artigiani from './features/artigiani/';
 import Artigiano from './features/artigiano/';
+import Mappa from './features/mappa/';
 
 import User from './features/user/';
 
@@ -81,7 +82,7 @@ class App extends Component {
                   <Route
                     path="/"
                     exact
-                    component={Home}
+                    component={Mappa}
                   />
                   <Route
                     path="/sign-in"
